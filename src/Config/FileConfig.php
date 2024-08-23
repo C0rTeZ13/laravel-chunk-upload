@@ -89,6 +89,16 @@ class FileConfig extends AbstractConfig
     }
 
     /**
+     * Should the chunk name add a hashed original file name?
+     *
+     * @return bool
+     */
+    public function chunkUseFileNameForName()
+    {
+        return $this->get('chunk.name.use.filename', false);
+    }
+
+    /**
      * Returns a chunks config value.
      *
      * @param string     $key     the config name is prepended to the key value

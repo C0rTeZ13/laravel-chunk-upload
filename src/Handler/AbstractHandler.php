@@ -98,6 +98,7 @@ abstract class AbstractHandler
         // ensure that the chunk name is for unique for the client session
         $useSession = $this->config->chunkUseSessionForName();
         $useBrowser = $this->config->chunkUseBrowserInfoForName();
+        $useFilename = $this->config->chunkUseFilenameForName();
         if ($useSession && false === static::canUseSession()) {
             $useBrowser = true;
             $useSession = false;
@@ -111,6 +112,10 @@ abstract class AbstractHandler
         // can work without any additional setup
         if ($useBrowser) {
             $array[] = md5($this->request->ip().$this->request->header('User-Agent', 'no-browser'));
+        }
+
+        if ($useFilename) {
+            $array[] = md5($this->request->file->getClientOriginalName());
         }
 
         // Add additional name for more unique chunk name

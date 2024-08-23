@@ -64,4 +64,11 @@ abstract class AbstractConfig
      * @return bool
      */
     abstract public function chunkUseBrowserInfoForName();
+
+    /**
+     * Should the chunk name add a hashed original file name?
+     *
+     * @return bool
+     */
+    abstract public function chunkUseFileNameForName();
 }
